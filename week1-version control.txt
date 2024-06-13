@@ -1,0 +1,4 @@
+Version control allows programmers to keep track of changes in a project and identify who made those changes. It facilitates collaborative work, ensuring that each team member is aware of what others are working on. This system is essential for maintaining organization and coordination within a team. Common commands used in version control systems include git add, git commit, and git push. Each change requires a comment, making it easier for anyone reviewing the changes to understand what happened and continue working seamlessly. This practice enhances communication and efficiency, ultimately leading to a more cohesive and productive development process.
+
+
+Viviana Monge Marin 
