@@ -1,6 +1,7 @@
 public class BreathingActivity : Activity
 {
     public BreathingActivity(string name, string description) : base (name, description)
+    
     {
         
     }
@@ -10,10 +11,12 @@ public class BreathingActivity : Activity
         DisplayStartMsg();
         ShowSpinner();
         Console.WriteLine("We'll start in a bit!");
-        FindEndTime();
         ShowSpinner();
+
+        DateTime startTime = DateTime.Now;DateTime endTime = startTime.AddSeconds(_duration);
         
-        while (DateTime.Now < _endTime)
+        while (DateTime.Now < endTime)
+
         {
             Console.WriteLine("Breath in, for 5 seconds");
             ShowCountDown();
@@ -23,7 +26,6 @@ public class BreathingActivity : Activity
             ShowCountDown();
         }
 
-        ShowSpinner();
         DisplayCloseMsg();
     }
 }

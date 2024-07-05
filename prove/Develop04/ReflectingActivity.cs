@@ -61,15 +61,17 @@ public class ReflectingActivity : Activity
         DisplayStartMsg();
         ShowSpinner();
         Console.WriteLine("We'll start in a bit!");
-        FindEndTime();
         ShowSpinner();
 
         DisplayPrompt();
         ShowSpinner();
 
-        while (DateTime.Now < _endTime)
+        DateTime startTime = DateTime.Now; DateTime endTime = startTime.AddSeconds(_duration);
+
+        while (DateTime.Now < endTime)
         {
             DisplayQuestion();
+            ShowSpinner();
             ShowSpinner();
         }
 

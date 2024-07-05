@@ -18,6 +18,7 @@ class Program
         Console.WriteLine("2. Start Reflecting Activity");
         Console.WriteLine("3. Start Listing Activity");
         Console.WriteLine("4. Quit");
+        
         string choice = Console.ReadLine();
 
         if (choice == "1")

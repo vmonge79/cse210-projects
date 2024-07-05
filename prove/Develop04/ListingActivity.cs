@@ -27,7 +27,7 @@ public class ListingActivity : Activity
 
     public ListingActivity(string name, string description) : base(name, description)
     {
-        
+
     }
 
     public void GetRandomPrompt()
@@ -47,19 +47,22 @@ public class ListingActivity : Activity
         DisplayStartMsg();
         ShowSpinner();
         Console.WriteLine("We'll start in a bit!");
-        FindEndTime();
+       
         ShowSpinner();
 
         GetRandomPrompt();
         ShowSpinner();
         Console.WriteLine("List everything that comes to your mind!");
 
-        while (DateTime.Now < _endTime)
+        DateTime startTime = DateTime.Now; DateTime endTime = startTime.AddSeconds(_duration);
+
+        while (DateTime.Now < endTime)
         {
             Console.ReadLine();
             _count +=1;
         }
-        
+
+        ShowSpinner();
         Console.WriteLine($"Great, you made a list of {_count}");
         DisplayCloseMsg();
 
