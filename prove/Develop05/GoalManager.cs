@@ -15,5 +15,18 @@ public class GoalManager
         _score = score;
     }
 
+    public void CreateGoal(Goal goal)
+    {
+        Console.WriteLine("What is the name of your goal?");
+        string shortName = Console.ReadLine();
+        Console.WriteLine("What is a short decription of it?");
+        string description = Console.ReadLine();
+        Console.WriteLine("What is the amount od points associated with this goal?");
+        string pointsInput = Console.ReadLine();
+        int points = int.Parse(pointsInput);
+        goal.SetPoints(points);
+
+    }
+
 
 }
