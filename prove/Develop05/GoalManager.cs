@@ -1,5 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 public class GoalManager
@@ -22,7 +27,7 @@ public class GoalManager
         Console.WriteLine("What is the name of your goal?");
         string shortName = Console.ReadLine();
         goal.SetShortName(shortName);
-        Console.WriteLine("What is a short decription of it?");
+        Console.WriteLine("What is a short description of it?");
         string description = Console.ReadLine();
         Console.WriteLine("What is the amount of points associated with this goal?");
         goal.SetDescription(description);
@@ -39,7 +44,7 @@ public class GoalManager
         Console.WriteLine("What is the name of your goal?");
         string shortName = Console.ReadLine();
         goal.SetShortName(shortName);
-        Console.WriteLine("What is a short decription of it?");
+        Console.WriteLine("What is a short description of it?");
         string description = Console.ReadLine();
         Console.WriteLine("What is the amount of points associated with this goal?");
         goal.SetDescription(description);
@@ -50,7 +55,7 @@ public class GoalManager
         string timesInput = Console.ReadLine();
         int target = int.Parse(timesInput);
         goal.SetTarget(target);
-        Console.WriteLine("What is the bonus for accomplish it that many times?");
+        Console.WriteLine("What is the bonus for accomplishing it that many times?");
         string bonusInput = Console.ReadLine();
         int bonus = int.Parse(bonusInput);
         goal.SetBonus(bonus);
@@ -86,7 +91,7 @@ public class GoalManager
     {
         Console.WriteLine("Saving...");
 
-        using (StreamWriter outputfile = new StreamWriter(filename))
+        using (StreamWriter outputFile = new StreamWriter(filename))
         {
             foreach (Goal goal in goals)
             {
@@ -105,10 +110,10 @@ public class GoalManager
                     goalDetails += $", Target: {checklistGoal.GetTarget()}, Bonus: {checklistGoal.GetBonus()}";
                 }
 
-                outputfile.WriteLine(goalDetails);
+                outputFile.WriteLine(goalDetails);
             }
 
-            outputfile.WriteLine("Total Score: " + _score);
+            outputFile.WriteLine($"Total Score: {_score}");
         }
     }
 
@@ -118,7 +123,7 @@ public class GoalManager
 
         goals.Clear();
 
-        string[] lines = System.IO.File.ReadAllLines(filename);
+        string[] lines = File.ReadAllLines(filename);
 
         foreach (string line in lines)
         {
@@ -154,9 +159,9 @@ public class GoalManager
     {
         Console.WriteLine("Choose the goal:");
 
-        string[] lines = System.IO.File.ReadAllLines(filename);
+        string[] lines = File.ReadAllLines(filename);
 
-        goals.Clear();   
+        goals.Clear();
 
         int i = 1;
         foreach (string line in lines)
@@ -195,7 +200,6 @@ public class GoalManager
         }
     }
 
-
     public void RecordEvent(int goalIndex)
     {
         Goal selectedGoal = goals[goalIndex - 1];
@@ -204,31 +208,29 @@ public class GoalManager
         {
             simpleGoal.SetIsComplete(true);
             _score += simpleGoal.GetPoints();
-            Console.WriteLine("Simple goal completed! Points awarded: " + simpleGoal.GetPoints());
+            Console.WriteLine("Simple goal completed!");
         }
         else if (selectedGoal is EternalGoal eternalGoal)
         {
             _score += eternalGoal.GetPoints();
-            Console.WriteLine("Eternal goal recorded! Points awarded: " + eternalGoal.GetPoints());
+            Console.WriteLine("Eternal goal recorded!");
         }
         else if (selectedGoal is ChecklistGoal checklistGoal)
         {
-            checklistGoal.SetAmountCompleted(checklistGoal.GetAmountCompleted() + 1);
+            checklistGoal.IncrementAttempts();
             _score += checklistGoal.GetPoints();
-            Console.WriteLine("Checklist goal progress recorded! Points awarded: " + checklistGoal.GetPoints());
+
+            Console.WriteLine($"Checklist goal attempts: {checklistGoal.GetAttempts()}/{checklistGoal.GetTarget()}");
 
             if (checklistGoal.GetAmountCompleted() >= checklistGoal.GetTarget())
             {
                 _score += checklistGoal.GetBonus();
-                Console.WriteLine("Checklist goal completed! Bonus points awarded: " + checklistGoal.GetBonus());
+                Console.WriteLine("Checklist goal completed! Bonus points awarded!");
+            }
+            else
+            {
+                Console.WriteLine("Checklist goal progress recorded!");
             }
         }
-
-        Console.WriteLine("Total Score: " + _score);
     }
 }
-
-
-
-
-
