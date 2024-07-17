@@ -48,12 +48,13 @@ class Program
 
         foreach (Video video in videos)
         {
-            Console.WriteLine($"Title: {video.GetTitle()} >> Author: {video.GetAuthor()} >>  Length: {video.GetLenght()} >> Number of comments: {video.NumberComments()}");
+            Console.WriteLine($"Title: {video.GetTitle()} >> Author: {video.GetAuthor()} >>  Length: {video.GetLength()} >> Number of comments: {video.NumberComments()}");
 
-            foreach (var comment in video.comments)
+            foreach (var comment in video.GetComments())
             {
-                Console.WriteLine($"Comment by {comment.GetName()}: {comment.GetComment()}");
+                comment.ShowComment(); 
             }
+
             Console.WriteLine();
         }
 

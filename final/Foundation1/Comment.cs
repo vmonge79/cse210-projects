@@ -1,9 +1,7 @@
 public class Comment
 {
-
     private string _comment;
     private string _name;
-
 
     public string GetComment()
     {
@@ -20,7 +18,7 @@ public class Comment
         return _name;
     }
 
-    public void GetName(string name)
+    public void SetName(string name)
     {
         _name = name;
     }
@@ -35,6 +33,4 @@ public class Comment
     {
         Console.WriteLine($"{_comment}, by {_name}");
     }
-
-
 }
