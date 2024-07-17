@@ -11,7 +11,7 @@ public class SimpleGoal: Goal
  {
     _isComplete = isComplete;
  }
-
+ 
 public SimpleGoal(string shortName, string description, int points) : base (shortName, description, points)
 {
     

@@ -40,3 +40,4 @@ public class ChecklistGoal : Goal
         _bonus = bonus;
     }
 }
+

@@ -1,0 +1,3 @@
+Type: Checklist, Name: Swimming, Description: To go swimming twice a week for a month, Points: 25, Target: 10, Bonus: 500
+Type: Eternal, Name: Temple, Description: Go to the Temple once a month, Points: 100
+Type: Simple, Name: Talk, Description: To prepare a talk just in case it's needed, Points: 250
