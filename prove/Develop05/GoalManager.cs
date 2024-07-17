@@ -107,6 +107,8 @@ public class GoalManager
 
                 outputfile.WriteLine(goalDetails);
             }
+
+            outputfile.WriteLine("Total Score: " + _score);
         }
     }
 
@@ -154,12 +156,45 @@ public class GoalManager
 
         string[] lines = System.IO.File.ReadAllLines(filename);
 
+        goals.Clear();   
+
         int i = 1;
         foreach (string line in lines)
         {
+            if (line.StartsWith("Total Score:"))
+            {
+                _score = int.Parse(line.Split(':')[1].Trim());
+                continue;
+            }
+
+            string[] parts = line.Split(',');
+            string type = parts[0].Split(':')[1].Trim();
+            string shortName = parts[1].Split(':')[1].Trim();
+            string description = parts[2].Split(':')[1].Trim();
+            int points = int.Parse(parts[3].Split(':')[1].Trim());
+
+            if (type == "Simple")
+            {
+                SimpleGoal goal = new SimpleGoal(shortName, description, points);
+                goals.Add(goal);
+            }
+            else if (type == "Eternal")
+            {
+                EternalGoal goal = new EternalGoal(shortName, description, points);
+                goals.Add(goal);
+            }
+            else if (type == "Checklist")
+            {
+                int target = int.Parse(parts[4].Split(':')[1].Trim());
+                int bonus = int.Parse(parts[5].Split(':')[1].Trim());
+                ChecklistGoal goal = new ChecklistGoal(shortName, description, points, target, bonus);
+                goals.Add(goal);
+            }
+
             Console.WriteLine($"{i++}. {line}");
         }
     }
+
 
     public void RecordEvent(int goalIndex)
     {
