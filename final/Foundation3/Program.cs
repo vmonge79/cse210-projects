@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        
+
         Address ad1 = new Address("Tres Ríos", "Cartago");
         Address ad2 = new Address("San Joaquín", "Heredia");
         Address ad3 = new Address("San Pedro", "San José");
