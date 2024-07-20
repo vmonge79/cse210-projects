@@ -32,7 +32,7 @@ public class Lecture : Event
 
     }
 
-    public override DisplayFullDetails()
+    public override void DisplayFullDetails()
     {
         base.DisplayFullDetails();
         Console.WriteLine($"Speaker: {_speaker} || Capacity: Maximum {_capacity} people");
