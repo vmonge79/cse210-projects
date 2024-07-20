@@ -3,6 +3,8 @@ public class Reception : Event
 
     private string _rsvp;
 
+    private Address _address;
+
     public string GetRSVP()
     {
         return _rsvp;
@@ -13,9 +15,7 @@ public class Reception : Event
         _rsvp = rsvp;
     }
 
-    public Reception(string eventName, string description, Address address, string rsvp, string date, string hour) : base(eventName, description, address, date, hour)
-
-
+    public Reception(string eventName, string description, Address address, string rsvp) : base (eventName, description, address)
     {
         _rsvp = rsvp;
     }

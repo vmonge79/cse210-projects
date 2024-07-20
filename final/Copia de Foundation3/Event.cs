@@ -49,25 +49,19 @@ public class Event
         _hour = hour;
     }
 
-    public Event(string eventName, string description, Address address, string date, string hour)
+    public Event(string eventName, string description, Address address)
     {
         _eventName = eventName;
         _description = description;
         _address = address;
-        _date = date;
-        _hour = hour;
 
     }
 
     public void DisplayDetails()
     {
-        Console.WriteLine();
-        Console.WriteLine("-----------------------------------");
-        Console.WriteLine("EVENT DETAILS");
         Console.WriteLine($"Event: {_eventName}, Description: {_description}");
 
-        
-       
+        Console.WriteLine();
     }
 
     public virtual void DisplayFullDetails()
@@ -76,18 +70,12 @@ public class Event
 
         Console.Write("Place"); _address.DisplayAddress();
         Console.WriteLine($"Date: {_date} || Time: {_hour}");
-        Console.WriteLine("-----------------------------------");
-        Console.WriteLine();
 
     }
 
     public void DisplayShortDescription()
     {
-        Console.WriteLine();
-        Console.WriteLine("EVENT");
         Console.WriteLine($"Event Type: {GetType().Name}, Name: {_eventName} || Time: {_hour}");
-        Console.WriteLine("-----------------------------------");
-
-
+        
     }
 }

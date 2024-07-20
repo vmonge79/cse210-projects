@@ -25,7 +25,7 @@ public class Lecture : Event
     }
 
 
-    public Lecture(string eventName, string description, Address address, string speaker, int capacity, string date, string hour) : base(eventName, description, address, date, hour)
+    public Lecture(string eventName, string description, Address address, string speaker, int capacity) : base(eventName, description, address)
     {
         _speaker = speaker;
         _capacity = capacity;

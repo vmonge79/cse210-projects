@@ -14,14 +14,14 @@ public class Outdoor : Event
     }
 
 
-    public Outdoor(string eventName, string description, Address address, string weather, string date, string hour) : base(eventName, description, address, date, hour)
+    public Outdoor(string eventName, string description, Address address, string weather) : base(eventName, description, address)
     {
 
         _weather = weather;
 
     }
 
-    public override void DisplayFullDetails()
+    public override DisplayFullDetails()
     {
         base.DisplayFullDetails();
         Console.WriteLine($"Expected weather: {_weather}");
